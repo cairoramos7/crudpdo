@@ -44,6 +44,8 @@ class Dao implements ICrud
             $query = $this->conexao->prepare($sql);
             $query->bindValue(':chave', $parametro, PDO::PARAM_INT);
             $query->execute();
+
+            header('Location: /');
         }
         catch (PDOException $exception){
             echo $exception->getMessage();
@@ -89,6 +91,8 @@ class Dao implements ICrud
             $query->bindValue(':senha', $objeto->getSenha());
             $query->bindValue(':chave', $objeto->getChave(), PDO::PARAM_INT);
             $query->execute();
+
+            header('Location: /');
         }
         catch (PDOException $exception){
             echo $exception->getMessage();

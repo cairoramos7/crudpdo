@@ -52,7 +52,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
 if(isset($_GET['modo']) && $_GET['modo'] == 'editar'){
-    $usuarioId = filter_input(INPUT_GET, 'chave', FILTER_VALIDATE_INT);
+    $usuarioEncoded = filter_input(INPUT_GET, 'chave');
+    $usuarioId = base64_decode($usuarioEncoded);
     $retorno = $pdo->ler($usuarioId);
     echo json_encode($retorno);
 }
